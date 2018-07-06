@@ -1,6 +1,12 @@
 <!-- app/resources/view/contact.blade.php -->
 
-<!DOCTYPE HTML>
+@extends('layout')
+
+@section('content')
+    <h1>Contact me!</h1>
+@endsection
+
+<!-- <!DOCTYPE HTML>
 <html>
 <head>
     <title>Contact</title>
@@ -8,4 +14,4 @@
 <body>
     <h1>Contact me!</h1>
 </body>
-</html>
+</html> -->
