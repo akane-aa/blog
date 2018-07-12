@@ -1,4 +1,5 @@
 <?php
+// config/app.php
 
 return [
 
@@ -118,7 +119,7 @@ return [
     | this array to grant expanded functionality to your applications.
     |
     */
-
+    // サービス・プロバイダーの登録
     'providers' => [
 
         /*
@@ -160,6 +161,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Collective\Html\HtmlServiceProvider::class,  // 追加
     ],
 
     /*
@@ -172,7 +174,7 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
-
+    // ファサードの登録
     'aliases' => [
 
         'App' => Illuminate\Support\Facades\App::class,
@@ -209,6 +211,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Form' => Collective\Html\FormFacade::class,  // 追加
+        'Html' => Collective\Html\HtmlFacade::class,  // 追加
     ],
 
 ];
