@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 
 class ArticlesController extends Controller
 {
@@ -24,14 +24,17 @@ class ArticlesController extends Controller
       return view('articles.create');
     }
 
-    public function store() {
-        // ①フォームの入力値を取得
-        $inputs = \Request::all();
+    public function store(Request $request) {
+      $rules = [
+          'title' => 'required|min:3',
+          'body' => 'required',
+          'published_at' => 'required|date',
+      ];
+      $this->validate($request, $rules);
 
-        // ②マスアサインメントを使って、記事をDBに作成
-        Article::create($inputs);
+      Article::create($request->all());
 
-        // ③記事一覧へリダイレクト
-        return redirect('articles');    
+      return redirect('articles');
     }
-}
+
+    }
