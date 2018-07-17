@@ -1,21 +1,23 @@
+
 @extends('layout')
 
 @section('content')
-    <h1>Edit: {{$article->title}}</h1>
+    <h1>Write a New Article</h1>
 
     <hr/>
-    @include('errors.form_errors')
+
     <!-- @if ($errors->any())
-        <ul class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
             </ul>
         </div>
     @endif -->
-
-    {!! Form::model($article,['method' => 'PATCH','url' => ['articles',$article->id]]) !!}
-        @include('article.form',['$published_at' => $article->published_at->format('Y-m-d'),'submitButton' => 'Edit Article'])
+    @include('errors.form_errors')
+    {!! Form::open(['url' => 'articles']) !!}
+         @include('articles.form', ['published_at' => $article->published_at->format('Y-m-d'), 'submitButton' => 'Edit Article'])
         <!-- <div class="form-group">
             {!! Form::label('title', 'Title:') !!}
             {!! Form::text('title', null, ['class' => 'form-control']) !!}
@@ -26,10 +28,10 @@
         </div>
         <div class="form-group">
             {!! Form::label('published_at', 'Publish On:') !!}
-            {!! Form::input('date', 'published_at', $article->published_at->format('Y-m-d'), ['class' => 'form-control']) !!}
+            {!! Form::input('date', 'published_at', date('Y-m-d'), ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::submit('Edit Article', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Add Article', ['class' => 'btn btn-primary form-control']) !!}
         </div> -->
     {!! Form::close() !!}
-@stop
+@endsection

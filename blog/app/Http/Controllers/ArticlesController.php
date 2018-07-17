@@ -17,12 +17,15 @@ class ArticlesController extends Controller
     }
 
     public function show($id) {
-        return $id;
+        $article =Article::findOrFail($id);
+        return view('articles.show', compact('article'));
     }
 
     public function create()
     {
       return view('articles.create');
+      // $article =Article::findOrFail($id);
+      // return view('articles.create', compact('article'));
     }
 
     public function store(ArticleRequest $request) {
