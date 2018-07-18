@@ -162,6 +162,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,  // 追加
+        Laracasts\Flash\FlashServiceProvider::class, //laracasts/flash を組込み
     ],
 
     /*
@@ -213,6 +214,7 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,  // 追加
         'Html' => Collective\Html\HtmlFacade::class,  // 追加
+        'Flash' => Laracasts\Flash\Flash::class, //  laracasts/flash を組込み
     ],
 
 ];
