@@ -23,9 +23,9 @@ class ArticlesController extends Controller
 
     public function create()
     {
-      return view('articles.create');
-      // $article =Article::findOrFail($id);
-      // return view('articles.create', compact('article'));
+      // return view('articles.create');
+      $article =Article::findOrFail($id);
+      return view('articles.create', compact('article'));
     }
 
     public function store(ArticleRequest $request) {
@@ -43,7 +43,15 @@ class ArticlesController extends Controller
     public function update($id, ArticleRequest $request){
         $article = Article::findOrFail($id);
 
-        $article->updete($request->all());
+        $article->update($request->all());
         return redirect(url('articles',[$article->id]));
+    }
+
+    public function destroy($id) {
+        $article = Article::findOrFail($id);
+
+        $article->delete();
+
+        return redirect('articles');
     }
     }
