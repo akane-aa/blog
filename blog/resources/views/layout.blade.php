@@ -10,7 +10,6 @@
 <body>
     <div class="container">
       @include('flash::message')
-      
 
       {{-- コンテンツの表示 --}}
       @yield('content')

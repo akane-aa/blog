@@ -16,8 +16,9 @@
         </div>
     @endif -->
     @include('errors.form_errors')
-    {!! Form::open(['url' => 'articles']) !!}
-         @include('articles.form', ['published_at' => $article->published_at->format('Y-m-d'), 'submitButton' => 'Edit Article'])
+    {-- Form::open(['url' => 'articles']) --}
+    {!! Form::open(['route' => 'articles.store']) !!}
+         @include('articles.form', ['published_at' => date('Y-m-d'), 'submitButton' => 'Add Article'])
         <!-- <div class="form-group">
             {!! Form::label('title', 'Title:') !!}
             {!! Form::text('title', null, ['class' => 'form-control']) !!}
