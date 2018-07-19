@@ -6,17 +6,8 @@
 
     <hr/>
 
-    <!-- @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif -->
     @include('errors.form_errors')
-    {-- Form::open(['url' => 'articles']) --}
+    <!-- { Form::open(['url' => 'articles']) } -->
     {!! Form::open(['route' => 'articles.store']) !!}
          @include('articles.form', ['published_at' => date('Y-m-d'), 'submitButton' => 'Add Article'])
         <!-- <div class="form-group">
