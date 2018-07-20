@@ -163,6 +163,7 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,  // 追加
         Laracasts\Flash\FlashServiceProvider::class, //laracasts/flash を組込み
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*
