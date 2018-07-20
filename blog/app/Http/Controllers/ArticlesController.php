@@ -28,9 +28,8 @@ class ArticlesController extends Controller
     public function store(ArticleRequest $request) {
 
       Article::create($request->all());
-      $article->delete();
-      \Session::flash('flash_message', '記事を削除しました。');
-      // return redirect('articles');
+      \Flash::success('記事を追加しました。');
+
       return redirect()->route('articles.index');
     }
 
@@ -40,27 +39,22 @@ class ArticlesController extends Controller
         return view('articles.edit',compact('article'));
     }
 
-    public function update($id, ArticleRequest $request){
+    public function update($id, ArticleRequest $request) {
         $article = Article::findOrFail($id);
 
         $article->update($request->all());
-        \Flash::success('記事を更新しました。');
-        // return redirect(url('articles', [$article->id]));
+         \Flash::success('記事を更新しました。');
+
         return redirect()->route('articles.show', [$article->id]);
 
-        // $article->delete();
-        // \Session::flash('flash_message', '記事を削除しました。');
-        // // return redirect(url('articles',[$article->id]));
-        // return redirect()->route('articles.show', [$article->id]);
-    }
+        }
 
     public function destroy($id) {
         $article = Article::findOrFail($id);
 
         $article->delete();
-        \Session::flash('flash_message', '記事を削除しました。');
-        // return redirect('articles');
-        return redirect()->route('articles.show',[$article->id]);
+        \Flash::success('記事を削除しました。');
+         return redirect()->route('articles.index');
     }
 
 
