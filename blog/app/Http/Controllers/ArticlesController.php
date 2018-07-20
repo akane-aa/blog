@@ -53,7 +53,8 @@ class ArticlesController extends Controller
         $article = Article::findOrFail($id);
 
         $article->delete();
-        \Flash::success('記事を削除しました。');
+        \Flash::success('記事を削除しま
+        した。');
          return redirect()->route('articles.index');
     }
 
