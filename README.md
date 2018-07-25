@@ -44,3 +44,9 @@ Authenticate.phpがディレクトリに存在しない
 
 Authenticate.phpは以下に格納されている
 blog/blog/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php
+
+laravel_33
+laravel_34
+
+App\Tag::lists('name');は5.6では使えない。
+App\Tag::pluck('name');を使う
