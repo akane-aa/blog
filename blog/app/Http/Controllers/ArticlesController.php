@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Tag;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use Carbon\Carbon;
@@ -26,24 +27,29 @@ class ArticlesController extends Controller
 
     public function create()
     {
-      return view('articles.create');
+      $tags = Tag::pluck('name', 'id');
+      return view('articles.create',compact('tags'));
     }
 
     public function store(ArticleRequest $request)
     {
-      \Auth::user()->articles()->create($request->all());
+      $article = \Auth::user()->articles()->create($request->all());
+      $article->tags()->attach($request->input('tag_list'));
+
       \Session::flash('Flash_message','記事を追加しました。');
       return redirect()->route('articles.index');
     }
 
     public function edit(Article $article)
     {
-      return view('articles.edit',compact('article'));
+      $tags = Tag::pluck('name', 'id');
+      return view('articles.edit',compact('article','tags'));
     }
 
     public function update(Article $article, ArticleRequest $request)
     {
       $article->update($request->all());
+      $article->tags()->sync($request->input('tag_list', []));
       \Session::flash('flash_message','記事を更新しました。');
       return redirect()->route('articles.show', [$article->id]);
 
