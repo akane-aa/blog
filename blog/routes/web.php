@@ -13,7 +13,7 @@
 Route::get('about','PagesController@about');
 Route::get('contact','WelcomeController@contact');
 
-Route::get('/','ArticlesController@index');
+Route::get('/','ArticlesController@index')->middleware('html.minify');
 
 Route::resource('articles','ArticlesController');
 
