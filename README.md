@@ -20,7 +20,12 @@ laravel_29_参照
 通知クラスの切り替えを行う必要がある。
 https://www.ritolab.com/entry/52#create_mail_template
 
-laravel_30
+laravel_30＿参照
+
+ミドルウェアとは
+リクエストに対するフィルタリングを行う
+https://www.ritolab.com/entry/69
+
 laravel5.1では、ミドルウェアは以下のディレクトリに格納されている
 app/Http/Middleware/
 ├── Authenticate.php
