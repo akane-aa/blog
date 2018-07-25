@@ -9,6 +9,8 @@
         <div class="body">{{ $article->body }}</div>
     </article>
 
+    {{-- ログインしている時だけ表示 --}}
+    @if (Auth::check())
     <br/>
 
     {!! link_to(action('ArticlesController@edit', [$article->id]), '編集', ['class' => 'btn btn-primary']) !!}
@@ -20,4 +22,5 @@
     <!-- {!! Form::open(['method' => 'DELETE', 'url' => ['articles', $article->id]]) !!}
         {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!} -->
+    @endif
 @stop
