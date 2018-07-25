@@ -21,8 +21,13 @@ class Article extends Model
         // 小文字に変換
         $this->attributes['title'] = mb_strtolower($value);
     }
-    
+
     public function scopePublished($query){
         $query->where('published_at','<=',Carbon::now());
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }
