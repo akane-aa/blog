@@ -16,10 +16,11 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();　//laravel_31 追加
+            $table->integer('user_id')->unsigned();   // 追加
             $table->string('title');
             $table->text('body');
             $table->timestamps();
+
 
             //外部キーの追加
             $table->foreign('user_id')

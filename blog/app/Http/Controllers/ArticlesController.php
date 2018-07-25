@@ -31,8 +31,10 @@ class ArticlesController extends Controller
 
     public function store(ArticleRequest $request) {
 
-      Article::create($request->all());
-      \Flash::success('記事を追加しました。');
+      // Article::create($request->all());
+      \Auth::user()->articles()->create($request->all());
+
+      \Session::flash('Flash_message','記事を追加しました。');
 
       return redirect()->route('articles.index');
     }
